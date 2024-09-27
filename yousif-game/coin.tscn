@@ -1,0 +1,33 @@
+[gd_scene load_steps=6 format=3 uid="uid://qayphh1n20ja"]
+
+[ext_resource type="Script" path="res://coin.gd" id="1_wptbc"]
+[ext_resource type="Texture2D" uid="uid://by5pyj8dl24cm" path="res://Asset/workshop_players.png" id="1_y8ehf"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7vl2p"]
+atlas = ExtResource("1_y8ehf")
+region = Rect2(48, 72, 24, 24)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_aw6en"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7vl2p")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ytere"]
+radius = 6.0
+
+[node name="Area2D" type="Area2D"]
+script = ExtResource("1_wptbc")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_aw6en")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_ytere")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

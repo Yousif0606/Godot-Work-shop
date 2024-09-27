@@ -1,0 +1,70 @@
+[gd_scene load_steps=10 format=3 uid="uid://bhkh7lrknx0fr"]
+
+[ext_resource type="Texture2D" uid="uid://by5pyj8dl24cm" path="res://Asset/workshop_players.png" id="1_jk5sc"]
+[ext_resource type="Script" path="res://player.gd" id="1_jnjoc"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_stnye"]
+atlas = ExtResource("1_jk5sc")
+region = Rect2(0, 24, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_truky"]
+atlas = ExtResource("1_jk5sc")
+region = Rect2(24, 24, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_arje6"]
+atlas = ExtResource("1_jk5sc")
+region = Rect2(48, 24, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dwfw7"]
+atlas = ExtResource("1_jk5sc")
+region = Rect2(72, 24, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ftjg7"]
+atlas = ExtResource("1_jk5sc")
+region = Rect2(96, 24, 24, 24)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_jchvb"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_stnye")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_truky")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_arje6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dwfw7")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ftjg7")
+}],
+"loop": true,
+"name": &"jump",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_m5tou"]
+size = Vector2(8.16463, 12.4268)
+
+[node name="CharacterBody2D" type="CharacterBody2D"]
+scale = Vector2(2.05, 2.05)
+script = ExtResource("1_jnjoc")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(-2.38419e-07, 2.38419e-07)
+scale = Vector2(0.75, 0.708333)
+sprite_frames = SubResource("SpriteFrames_jchvb")
+animation = &"jump"
+frame_progress = 0.79772
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0.795732, 1.46341)
+shape = SubResource("RectangleShape2D_m5tou")
